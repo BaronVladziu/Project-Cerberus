@@ -1,36 +1,51 @@
-// Programmer: Mihalis Tsoukalos
-// Date: Wednesday 04 June 2014
-//
-// A simple OpenGL program that draws a triangle.
+#include <iostream>
+#include <stdlib.h>
 
-#include "GL/freeglut.h"
-#include "GL/gl.h"
+#include "header.h"
+#include "game.h"
 
-void drawTriangle()
+
+// Initializes 3D rendering
+void initRendering()
 {
-    glClearColor(0.4f, 0.4f, 0.4f, 0.4f);
-    glClear(GL_COLOR_BUFFER_BIT);
+        glEnable(GL_DEPTH_TEST);
+        glEnable(GL_COLOR_MATERIAL);
 
-    glColor3f(1.0, 1.0, 1.0);
-    glOrtho(-1.0, 1.0, -1.0, 1.0, -1.0, 1.0);
-
-        glBegin(GL_TRIANGLES);
-                glVertex3f(-0.7f, 0.7f, 0);
-                glVertex3f(0.7f, 0.7f, 0);
-                glVertex3f(0, -1, 0);
-        glEnd();
-
-    glFlush();
+        // Set the color of the background
+        glClearColor(0.7f, 0.8f, 1.0f, 1.0f);
+        glEnable(GL_LIGHTING);
+        glEnable(GL_LIGHT0);
+        glEnable(GL_NORMALIZE);
 }
 
-int main(int argc, char **argv)
+
+// Called when the window is resized
+void handleResize(int w, int h)
 {
+        glViewport(0, 0, w, h);
+        glMatrixMode(GL_PROJECTION);
+        glLoadIdentity();
+        gluPerspective(45.0, double(w) / double(h), 1.0, 200.0);
+}
+
+
+int main(int argc, char **argv)
+{    
+    //OpenGL init
     glutInit(&argc, argv);
-    glutInitDisplayMode(GLUT_SINGLE);
-    glutInitWindowSize(500, 500);
-    glutInitWindowPosition(100, 100);
-    glutCreateWindow("OpenGL - Creating a triangle");
-    glutDisplayFunc(drawTriangle);
+    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
+    glutInitWindowSize(Game::BASE_WINDOW_SIZE_X, Game::BASE_WINDOW_SIZE_Y);
+    glutCreateWindow(Game::WINDOW_NAME.c_str());
+    initRendering();
+
+    //Add OpenGL update functions
+    glutDisplayFunc(Game::draw);
+    glutReshapeFunc(handleResize);
+
+    // Add a timer for the update(...) function
+    glutTimerFunc(0, Game::update, 0);
+
+    //Start main loop
     glutMainLoop();
     return 0;
 }

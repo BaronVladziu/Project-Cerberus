@@ -7,6 +7,12 @@ find_package(OpenGL REQUIRED)
 find_package(GLUT REQUIRED)
 include_directories(library ${OPENGL_INCLUDE_DIRS} ${GLUT_INCLUDE_DIRS})
 
+# Source files
+file(GLOB SOURCE_FILES
+    "*.h"
+    "*.cpp"
+)
+
 # Executable
-add_executable(${PROJECT_NAME} "main.cpp")
+add_executable(${PROJECT_NAME} ${SOURCE_FILES})
 target_link_libraries(${PROJECT_NAME} ${OPENGL_LIBRARIES} ${GLUT_LIBRARIES})
