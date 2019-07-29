@@ -2,6 +2,7 @@
 #define HEADER_H
 
 // basic libraries
+#include <stdlib.h>
 #include <iostream>
 #include <cassert>
 

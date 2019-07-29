@@ -1,24 +1,36 @@
 #include "game.h"
-#include "header.h"
-#include "scene.h"
-
 
 const std::string Game::WINDOW_NAME = "Project-Cerberus [Pre-Alpha]";
 Scene Game::_scene;
+InputManager Game::_inputManager;
 const double Game::CAMERA_HEIGHT = 15.0;
 
-
-// Function for increasing the angle variable smoothly,
-// keeps it <=360
-// It can also be implemented using the modulo operator.
+void Game::handleMouseMove(int x, int y) {
+    _inputManager.handleMouseMove(
+                2*float(x)/glutGet(GLUT_WINDOW_WIDTH) - 1,
+                2*float(y)/glutGet(GLUT_WINDOW_HEIGHT) - 1);
+}
+void Game::handleMouseButtons(int button, int state, int x, int y) {
+    _inputManager.handleMouseButtons(button, bool(state),
+                                     2*float(x)/glutGet(GLUT_WINDOW_WIDTH) - 1,
+                                     2*float(y)/glutGet(GLUT_WINDOW_HEIGHT) - 1);
+}
+void Game::handleKeyPressed(unsigned char key, int x, int y) {
+    _inputManager.handleKeyboardButtons(key, true,
+                                        2*float(x)/glutGet(GLUT_WINDOW_WIDTH),
+                                        2*float(y)/glutGet(GLUT_WINDOW_HEIGHT));
+}
+void Game::handleKeyReleased(unsigned char key, int x, int y) {
+    _inputManager.handleKeyboardButtons(key, false,
+                                        2*float(x)/glutGet(GLUT_WINDOW_WIDTH) - 1,
+                                        2*float(y)/glutGet(GLUT_WINDOW_HEIGHT) - 1);
+}
 void Game::update(int value) {
     _scene.update();
 
     glutPostRedisplay();
     glutTimerFunc(25, update, 0);
 }
-
-
 void Game::draw() {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 

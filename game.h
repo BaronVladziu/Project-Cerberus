@@ -2,6 +2,7 @@
 #define GAME_H
 
 #include "header.h"
+#include "inputmanager.h"
 #include "scene.h"
 
 
@@ -18,13 +19,18 @@ public:
 
 private:
     static Scene _scene;
+    static InputManager _inputManager;
 
 private:
     Game();
 
 public:
-    static void update(int value);
     static void draw();
+    static void handleMouseMove(int x, int y);
+    static void handleMouseButtons(int button, int state, int x, int y);
+    static void handleKeyPressed(unsigned char key, int x, int y);
+    static void handleKeyReleased(unsigned char key, int x, int y);
+    static void update(int value);
 };
 
 #endif // GAME_H

@@ -1,6 +1,3 @@
-#include <iostream>
-#include <stdlib.h>
-
 #include "header.h"
 #include "game.h"
 
@@ -18,7 +15,6 @@ void initRendering()
         glEnable(GL_NORMALIZE);
 }
 
-
 // Called when the window is resized
 void handleResize(int w, int h)
 {
@@ -27,7 +23,6 @@ void handleResize(int w, int h)
         glLoadIdentity();
         gluPerspective(45.0, double(w) / double(h), 1.0, 200.0);
 }
-
 
 int main(int argc, char **argv)
 {    
@@ -41,6 +36,10 @@ int main(int argc, char **argv)
     //Add OpenGL update functions
     glutDisplayFunc(Game::draw);
     glutReshapeFunc(handleResize);
+    glutPassiveMotionFunc(Game::handleMouseMove);
+    glutMouseFunc(Game::handleMouseButtons);
+    glutKeyboardFunc(Game::handleKeyPressed);
+    glutKeyboardUpFunc(Game::handleKeyReleased);
 
     // Add a timer for the update(...) function
     glutTimerFunc(0, Game::update, 0);
