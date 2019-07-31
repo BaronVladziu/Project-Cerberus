@@ -40,8 +40,25 @@ public:
     Vector2<T> operator-(const Vector2<T> & v) const {
         return Vector2<T>(*this) -= v;
     }
+    Vector2<T> & operator*=(const T & k) {
+        x *= k;
+        y *= k;
+        return *this;
+    }
+    Vector2<T> & operator/=(const T & k) {
+        return *this *= 1/k;
+    }
+    Vector2<T> operator*(const T & k) const {
+        return Vector2<T>(*this) *= k;
+    }
+    Vector2<T> operator/(const T & k) const {
+        return Vector2<T>(*this) /= k;
+    }
+    T abs() const {
+        return std::sqrt(x*x + y*y);
+    }
     void print() const {
-        std::cout << "Point(" << x << "," << y << ")" << std::endl;
+        std::cout << "Vector2(" << x << "," << y << ")" << std::endl;
     }
 };
 

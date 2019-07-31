@@ -2,9 +2,13 @@
 #define HEADER_H
 
 // basic libraries
-#include <stdlib.h>
-#include <iostream>
 #include <cassert>
+#include <iostream>
+#include <list>
+#include <map>
+#include <math.h>
+#include <set>
+#include <stdlib.h>
 
 // the GLUT and OpenGL libraries have to be linked correctly
 #ifdef __APPLE__
