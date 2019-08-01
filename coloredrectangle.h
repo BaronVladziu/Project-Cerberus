@@ -14,20 +14,23 @@ public:
 
 private:
     Vector2<double> _centerPosition;
+    const double _depth;
     Vector2<double> _size = Vector2<double>(1, 1);
     Color _color;
 
 public:
-    ColoredRectangle(const Color & color = Color(0.f, 0.f, 0.f));
-    ColoredRectangle(Vector2<double> & pos, Vector2<double> & size,
+    ColoredRectangle(double depth, const Color & color = Color(0.f, 0.f, 0.f));
+    ColoredRectangle(double depth, Vector2<double> & pos, Vector2<double> & size,
                      const Color & color = Color(0.f, 0.f, 0.f));
-    ColoredRectangle(Vector2<double> & pos, double sizeX, double sizeY,
+    ColoredRectangle(double depth, Vector2<double> & pos, double sizeX, double sizeY,
                      const Color & color = Color(0.f, 0.f, 0.f));
-    ColoredRectangle(double posX, double posY, Vector2<double> & size,
+    ColoredRectangle(double depth, double posX, double posY, Vector2<double> & size,
                      const Color & color = Color(0.f, 0.f, 0.f));
-    ColoredRectangle(double posX, double posY, double sizeX, double sizeY,
+    ColoredRectangle(double depth, double posX, double posY, double sizeX, double sizeY,
                      const Color & color = Color(0.f, 0.f, 0.f));
     void draw() const;
+    const Color & getColor() const;
+    void setColor(const Color & color);
     virtual ~ColoredRectangle();
 };
 

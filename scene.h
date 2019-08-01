@@ -2,12 +2,14 @@
 #define SCENE_H
 
 #include "map.h"
+#include "player.h"
 
 
 class Scene :
         public Drawable
 {
     Map _map;
+    Player _player;
 
 public:
     Scene();

@@ -5,10 +5,10 @@
 class Color
 {
 public:
-    const float r = 0.f;
-    const float g = 0.f;
-    const float b = 0.f;
-    const float a = 1.f;
+    float r = 0.f;
+    float g = 0.f;
+    float b = 0.f;
+    float a = 1.f;
 
     Color();
     Color(float red, float green, float blue);

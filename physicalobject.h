@@ -31,6 +31,7 @@ public:
                    double forceX = 0, double forceY = 0);
     void addForce(const Force & force);
     void addForce(const Vector2<double> & force, double velocityLimit = 0);
+    void collide(const Collidable &);
     const Vector2<double> & getCenterPosition() const;
     double getMass() const;
     const Vector2<double> getVelocity() const;

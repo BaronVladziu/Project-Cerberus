@@ -5,11 +5,9 @@
 PhysicalObject::PhysicalObject()
     : _mass(1)
 {}
-
 PhysicalObject::PhysicalObject(double mass)
     : _mass(mass)
 {}
-
 PhysicalObject::PhysicalObject(double mass,
                                const Vector2<double> & centerPosition,
                                const Vector2<double> & velocity,
@@ -17,7 +15,6 @@ PhysicalObject::PhysicalObject(double mass,
     : _mass(mass), _centerPosition(centerPosition),
       _unlimitedVelocity(velocity), _unlimitedForce(force)
 {}
-
 PhysicalObject::PhysicalObject(double mass,
                                double centerPositionX, double centerPositionY,
                                double velocityX, double velocityY,
@@ -26,7 +23,6 @@ PhysicalObject::PhysicalObject(double mass,
       _unlimitedVelocity(velocityX, velocityY),
       _unlimitedForce(forceX, forceY)
 {}
-
 void PhysicalObject::addForce(const Force & force) {
     if (force.getVelocityLimit() > 0) {
         _limitedForces.push_back(force);
@@ -34,23 +30,21 @@ void PhysicalObject::addForce(const Force & force) {
         _unlimitedForce += force.getForce();
     }
 }
-
 void PhysicalObject::addForce(const Vector2<double> & force, double velocityLimit) {
     addForce(Force(force, velocityLimit));
 }
-
+void PhysicalObject::collide(const Collidable & c) {
+    //TODO
+}
 const Vector2<double> & PhysicalObject::getCenterPosition() const {
     return _centerPosition;
 }
-
 double PhysicalObject::getMass() const {
     return _mass;
 }
-
 const Vector2<double> PhysicalObject::getVelocity() const {
     return _finalVelocity;
 }
-
 void PhysicalObject::update() {
     // Velocities
     _unlimitedVelocity += _unlimitedForce/_mass;
