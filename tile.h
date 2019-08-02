@@ -3,6 +3,8 @@
 
 #include "collidable.h"
 #include "coloredrectangle.h"
+#include "drawlayer.h"
+#include "drawlayertype.h"
 #include "header.h"
 #include "tiletype.h"
 #include "vector2.h"
@@ -21,9 +23,9 @@ private:
     void updateColor();
 
 public:
-    Tile(TileType type);
-    Tile(Vector2<double> & pos, TileType type);
-    Tile(double posX, double posY, TileType type);
+    Tile(TileType type, const DrawLayerType & drawLayerType);
+    Tile(Vector2<double> & pos, TileType type, const DrawLayerType & drawLayerType);
+    Tile(double posX, double posY, TileType type, const DrawLayerType & drawLayerType);
     void collide(const Collidable &);
     TileType getTileType() const;
     void setTileType(TileType type);

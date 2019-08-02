@@ -2,6 +2,8 @@
 #define PLAYER_H
 
 #include "coloredrectangle.h"
+#include "drawlayer.h"
+#include "drawlayertype.h"
 #include "physicalobject.h"
 
 

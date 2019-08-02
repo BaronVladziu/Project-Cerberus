@@ -1,14 +1,14 @@
 #include "tile.h"
 
 
-Tile::Tile(TileType type)
-    : ColoredRectangle(0.0), _type(type)
+Tile::Tile(TileType type, const DrawLayerType & drawLayerType)
+    : ColoredRectangle(DrawLayer(drawLayerType).getDepth()), _type(type)
 {}
-Tile::Tile(Vector2<double> & pos, TileType type)
-    : ColoredRectangle(0.0, pos, SIZE, SIZE), _type(type)
+Tile::Tile(Vector2<double> & pos, TileType type, const DrawLayerType & drawLayerType)
+    : ColoredRectangle(DrawLayer(drawLayerType).getDepth(), pos, SIZE, SIZE), _type(type)
 {}
-Tile::Tile(double posX, double posY, TileType type)
-    : ColoredRectangle(0.0, posX, posY, SIZE, SIZE), _type(type)
+Tile::Tile(double posX, double posY, TileType type, const DrawLayerType & drawLayerType)
+    : ColoredRectangle(DrawLayer(drawLayerType).getDepth(), posX, posY, SIZE, SIZE), _type(type)
 {}
 void Tile::collide(const Collidable & c) {
     //TODO
