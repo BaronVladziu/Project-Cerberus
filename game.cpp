@@ -26,6 +26,11 @@ void Game::handleKeyReleased(unsigned char key, int x, int y) {
                                         2*float(y)/glutGet(GLUT_WINDOW_HEIGHT) - 1);
 }
 void Game::update(int value) {
+    if (_inputManager.isKeyPressed(KeyType::Down)) _scene.movePlayerDown();
+    if (_inputManager.isKeyPressed(KeyType::Left)) _scene.movePlayerLeft();
+    if (_inputManager.isKeyPressed(KeyType::Right)) _scene.movePlayerRight();
+    if (_inputManager.isKeyPressed(KeyType::Up)) _scene.movePlayerUp();
+
     _scene.update();
 
     glutPostRedisplay();

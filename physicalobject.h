@@ -15,7 +15,7 @@ class PhysicalObject
     std::map<double, Vector2<double>> _limitedVelocities;
     Vector2<double> _finalVelocity;
     Vector2<double> _unlimitedForce;
-    std::list<Force> _limitedForces;
+    std::map<double, Vector2<double>> _limitedForces;
 
 public:
     PhysicalObject();

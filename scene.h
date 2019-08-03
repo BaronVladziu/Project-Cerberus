@@ -14,8 +14,12 @@ class Scene
 
 public:
     Scene();
-    void update();
     void draw() const;
+    void movePlayerDown();
+    void movePlayerLeft();
+    void movePlayerRight();
+    void movePlayerUp();
+    void update();
 };
 
 #endif // SCENE_H

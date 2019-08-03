@@ -16,7 +16,20 @@ void Player::draw() const {
 SceneObjectType Player::getType() const {
     return SceneObjectType::CreatureObject;
 }
+void Player::moveDown() {
+    _physicalObject.addForce(Vector2<double>(0.0, -_acceleration), _maxSpeed);
+}
+void Player::moveLeft() {
+    _physicalObject.addForce(Vector2<double>(-_acceleration, 0.0), _maxSpeed);
+}
+void Player::moveRight() {
+    _physicalObject.addForce(Vector2<double>(_acceleration, 0.0), _maxSpeed);
+}
+void Player::moveUp() {
+    _physicalObject.addForce(Vector2<double>(0.0, _acceleration), _maxSpeed);
+}
 void Player::update() {
     _physicalObject.update();
+    _rectangle.setCenterPosition(_physicalObject.getCenterPosition());
 }
 Player::~Player() {}

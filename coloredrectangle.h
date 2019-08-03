@@ -28,6 +28,7 @@ public:
                      const Color & color = Color(0.f, 0.f, 0.f));
     void draw() const;
     const Color & getColor() const;
+    void setCenterPosition(const Vector2<double> & position);
     void setColor(const Color & color);
     virtual ~ColoredRectangle();
 };

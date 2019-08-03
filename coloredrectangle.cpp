@@ -29,13 +29,13 @@ void ColoredRectangle::draw() const {
         glBegin(GL_POLYGON);
         glColor4f(1.f - _color.r, 1.f - _color.g, 1.f - _color.b, 1.f);
         glVertex3f(float(_centerPosition.x + _size.x/2),
-                   float(_centerPosition.y - _size.y/2), float(_depth) - 0.1f);
+                   float(_centerPosition.y - _size.y/2), float(_depth) - 0.001f);
         glVertex3f(float(_centerPosition.x + _size.x/2),
-                   float(_centerPosition.y + _size.y/2), float(_depth) - 0.1f);
+                   float(_centerPosition.y + _size.y/2), float(_depth) - 0.001f);
         glVertex3f(float(_centerPosition.x - _size.x/2),
-                   float(_centerPosition.y + _size.y/2), float(_depth) - 0.1f);
+                   float(_centerPosition.y + _size.y/2), float(_depth) - 0.001f);
         glVertex3f(float(_centerPosition.x - _size.x/2),
-                   float(_centerPosition.y - _size.y/2), float(_depth) - 0.1f);
+                   float(_centerPosition.y - _size.y/2), float(_depth) - 0.001f);
         glEnd();
 
         //Center
@@ -67,6 +67,9 @@ void ColoredRectangle::draw() const {
 }
 const Color & ColoredRectangle::getColor() const {
     return _color;
+}
+void ColoredRectangle::setCenterPosition(const Vector2<double> & position) {
+    _centerPosition = position;
 }
 void ColoredRectangle::setColor(const Color & color) {
     _color = color;

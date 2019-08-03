@@ -3,6 +3,7 @@
 
 #include "header.h"
 #include "keytype.h"
+#include "scene.h"
 #include "vector2.h"
 
 
@@ -18,7 +19,6 @@ public:
     void handleMouseButtons(int button, bool state, float x, float y);
     void handleKeyboardButtons(unsigned char key, bool state, float x, float y);
     bool isKeyPressed(KeyType key);
-
 };
 
 #endif // INPUTMANAGER_H

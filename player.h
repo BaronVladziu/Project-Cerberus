@@ -14,6 +14,8 @@ class Player :
 private:
     static constexpr double SIZE = 0.5;
 
+    double _maxSpeed = 0.1;
+    double _acceleration = 0.05;
     ColoredRectangle _rectangle;
     PhysicalObject _physicalObject;
 
@@ -22,6 +24,10 @@ public:
     Player(double posX, double posY);
     void draw() const;
     SceneObjectType getType() const;
+    void moveDown();
+    void moveLeft();
+    void moveRight();
+    void moveUp();
     void update();
     virtual ~Player();
 };

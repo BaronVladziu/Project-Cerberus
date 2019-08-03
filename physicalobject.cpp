@@ -25,7 +25,7 @@ PhysicalObject::PhysicalObject(double mass,
 {}
 void PhysicalObject::addForce(const Force & force) {
     if (force.getVelocityLimit() > 0) {
-        _limitedForces.push_back(force);
+        _limitedForces[force.getVelocityLimit()] += force.getForce();
     } else {
         _unlimitedForce += force.getForce();
     }
@@ -48,17 +48,25 @@ const Vector2<double> PhysicalObject::getVelocity() const {
 void PhysicalObject::update() {
     // Velocities
     _unlimitedVelocity += _unlimitedForce/_mass;
-    Vector2<double> _finalVelocity = _unlimitedVelocity;
-    for (const Force & force : _limitedForces) {
-        _limitedVelocities[force.getVelocityLimit()] += force.getForce()/_mass;
-        if (_limitedVelocities[force.getVelocityLimit()].abs() > force.getVelocityLimit()) {
-            _limitedVelocities[force.getVelocityLimit()] *= force.getVelocityLimit()/
-                    _limitedVelocities[force.getVelocityLimit()].abs();
+    _finalVelocity = _unlimitedVelocity;
+    for (const std::pair<const double, Vector2<double>> & force : _limitedForces) {
+        _limitedVelocities[force.first] += force.second/_mass;
+        if (_limitedVelocities[force.first].abs() > force.first) {
+            _limitedVelocities[force.first] *= force.first/
+                    _limitedVelocities[force.first].abs();
         }
-        _finalVelocity += _limitedVelocities[force.getVelocityLimit()];
     }
+    for (const std::pair<const double, Vector2<double>> & velocity : _limitedVelocities) {
+        _finalVelocity += velocity.second;
+    }
+    _finalVelocity.print();
+
     // Position
     _centerPosition += _finalVelocity;
+
+    // Reset forces
+    _unlimitedForce = Vector2<double>(0, 0);
+    _limitedForces.clear();
 }
 
 PhysicalObject::~PhysicalObject() {}

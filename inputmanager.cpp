@@ -29,3 +29,6 @@ void InputManager::handleKeyboardButtons(unsigned char key, bool state,
     _mousePosition.x = x;
     _mousePosition.y = y;
 }
+bool InputManager::isKeyPressed(KeyType key) {
+    return _keyTable[key];
+}
