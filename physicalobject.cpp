@@ -33,7 +33,7 @@ void PhysicalObject::addForce(const Force & force) {
 void PhysicalObject::addForce(const Vector2<double> & force, double velocityLimit) {
     addForce(Force(force, velocityLimit));
 }
-void PhysicalObject::collide(const Collidable & c) {
+void PhysicalObject::collide(const Collider & c) {
     //TODO
 }
 const Vector2<double> & PhysicalObject::getCenterPosition() const {

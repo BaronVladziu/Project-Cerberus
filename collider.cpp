@@ -13,7 +13,7 @@ Collider::Collider(double centerPosX, double centerPosY,
     : _centerPosition(centerPosX, centerPosY), _size(sizeX, sizeY)
 {}
 
-void Collider::collide(const Collidable &) {
+void Collider::collide(const Collider &) {
     //TODO
 }
 

@@ -2,16 +2,13 @@
 #define MAP_H
 
 #include "array2.h"
-#include "collidable.h"
-#include "drawable.h"
+#include "collider.h"
+#include "sceneobject.h"
 #include "tile.h"
 #include "vector2.h"
 
 
-class Map :
-        public Collidable,
-        public Drawable
-
+class Map
 {
     const Vector2<int> _SIZE = Vector2<int>(10, 10);
 
@@ -19,8 +16,7 @@ class Map :
 
 public:
     Map();
-    void collide(const Collidable &);
-    void draw() const;
+    std::list<SceneObject *> getSceneObjects() const;
     ~Map();
 };
 

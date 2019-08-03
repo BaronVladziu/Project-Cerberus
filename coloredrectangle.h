@@ -2,12 +2,10 @@
 #define COLOREDRECTANGLE_H
 
 #include "color.h"
-#include "drawable.h"
 #include "vector2.h"
 
 
-class ColoredRectangle :
-        public Drawable
+class ColoredRectangle
 {
 public:
     static const bool DRAW_BORDERS = true;

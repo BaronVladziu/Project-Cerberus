@@ -2,9 +2,10 @@
 #define TILETYPE_H
 
 enum TileType {
-    Void,
-    Floor,
-    Wall
+    VoidTile,
+    FloorTile,
+    ObstacleTile,
+    WallTile
 };
 
 #endif // TILETYPE_H

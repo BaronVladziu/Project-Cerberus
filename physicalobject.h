@@ -1,14 +1,13 @@
 #ifndef PHYSICALOBJECT_H
 #define PHYSICALOBJECT_H
 
-#include "collidable.h"
+#include "collider.h"
 #include "force.h"
 #include "header.h"
 #include "vector2.h"
 
 
-class PhysicalObject :
-        public Collidable
+class PhysicalObject
 {
     double _mass;
     Vector2<double> _centerPosition;
@@ -31,7 +30,7 @@ public:
                    double forceX = 0, double forceY = 0);
     void addForce(const Force & force);
     void addForce(const Vector2<double> & force, double velocityLimit = 0);
-    void collide(const Collidable &);
+    void collide(const Collider &);
     const Vector2<double> & getCenterPosition() const;
     double getMass() const;
     const Vector2<double> getVelocity() const;

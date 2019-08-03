@@ -1,20 +1,19 @@
 #ifndef DRAWLAYER_H
 #define DRAWLAYER_H
 
-#include "drawlayertype.h"
+#include "scenelayertype.h"
+#include "sceneobjecttype.h"
 
 
 class DrawLayer
 {
 private:
-    DrawLayerType _type;
+    SceneLayerType _layerType;
+    SceneObjectType _objectType;
 
 public:
-    DrawLayer();
-    DrawLayer(DrawLayerType type);
+    DrawLayer(SceneLayerType layerType, SceneObjectType objectType);
     double getDepth() const;
-    DrawLayerType getType() const;
-    void setType(DrawLayerType type);
 };
 
 #endif // DRAWLAYER_H

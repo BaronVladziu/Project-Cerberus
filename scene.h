@@ -3,13 +3,14 @@
 
 #include "map.h"
 #include "player.h"
+#include "sceneobject.h"
 
 
-class Scene :
-        public Drawable
+class Scene
 {
     Map _map;
     Player _player;
+    std::list<SceneObject *> _sceneObjects;
 
 public:
     Scene();

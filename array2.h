@@ -35,6 +35,12 @@ public:
     const Vector2<int> & getSize() const {
         return _SIZE;
     }
+    int getSizeX() const {
+        return _SIZE.x;
+    }
+    int getSizeY() const {
+        return _SIZE.y;
+    }
     T & get(const Vector2<int> & position) const {
         assert(position.x >= 0);
         assert(position.x < _SIZE.x);
