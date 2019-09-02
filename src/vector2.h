@@ -57,6 +57,14 @@ public:
     T abs() const {
         return std::sqrt(x*x + y*y);
     }
+    void setAbs(const T & abs) {
+        double k = abs/this->abs();
+        x *= k;
+        y *= k;
+    }
+    void normalize() {
+        setAbs(1);
+    }
     void print() const {
         std::cout << "Vector2(" << x << "," << y << ")" << std::endl;
     }

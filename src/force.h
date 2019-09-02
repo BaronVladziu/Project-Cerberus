@@ -11,7 +11,6 @@ private:
     const double _velocityLimit = 0;
 
 public:
-    Force();
     Force(const Vector2<double> & force)
         : _force(force)
     {}

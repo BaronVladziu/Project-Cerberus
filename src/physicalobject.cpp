@@ -33,6 +33,9 @@ void PhysicalObject::addForce(const Force & force) {
 void PhysicalObject::addForce(const Vector2<double> & force, double velocityLimit) {
     addForce(Force(force, velocityLimit));
 }
+void PhysicalObject::addFriction(const double friction) {
+    _friction += friction;
+}
 void PhysicalObject::collide(const Collider & c) {
     //TODO
 }
@@ -59,7 +62,12 @@ void PhysicalObject::update() {
     for (const std::pair<const double, Vector2<double>> & velocity : _limitedVelocities) {
         _finalVelocity += velocity.second;
     }
-    _finalVelocity.print();
+    double finalVelocityAbs = _finalVelocity.abs();
+    if (finalVelocityAbs > _friction) {
+        _finalVelocity.setAbs(finalVelocityAbs - _friction);
+    } else {
+        _finalVelocity = Vector2<double>(0, 0);
+    }
 
     // Position
     _centerPosition += _finalVelocity;
@@ -67,6 +75,7 @@ void PhysicalObject::update() {
     // Reset forces
     _unlimitedForce = Vector2<double>(0, 0);
     _limitedForces.clear();
+    _friction = 0;
 }
 
 PhysicalObject::~PhysicalObject() {}

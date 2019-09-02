@@ -16,6 +16,7 @@ class PhysicalObject
     Vector2<double> _finalVelocity;
     Vector2<double> _unlimitedForce;
     std::map<double, Vector2<double>> _limitedForces;
+    double _friction;
 
 public:
     PhysicalObject();
@@ -30,6 +31,7 @@ public:
                    double forceX = 0, double forceY = 0);
     void addForce(const Force & force);
     void addForce(const Vector2<double> & force, double velocityLimit = 0);
+    void addFriction(const double friction);
     void collide(const Collider &);
     const Vector2<double> & getCenterPosition() const;
     double getMass() const;
