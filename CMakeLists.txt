@@ -9,8 +9,8 @@ include_directories(library ${OPENGL_INCLUDE_DIRS} ${GLUT_INCLUDE_DIRS})
 
 # Source files
 file(GLOB SOURCE_FILES
-    "*.h"
-    "*.cpp"
+    "src/*.h"
+    "src/*.cpp"
 )
 
 # Executable
